@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+   
+    let frutas = ["uva", "banana", "abacate", "morango", "laranja"];
+    let objetos = ["mesa", "relogio", "garrafa", "retrato", "livro"];
+    let transportes = ["carro", "moto", "bicicleta", "caminhão", "onibus"];
+    let cores = ["amarelo", "preto", "azul", "rosa", "verde"];
+    let animais = ["avestruz", "gato", "cachorro", "capivara", "urso"];
+    let repeat = ("s");
+    let word = "";
+
+    function insira_tema(frutas,objetos,transportes,cores,animais) {
+        let tema = (false);
+        let jogo = (prompt("Escolha um tema: frutas, objetos, transportes, cores ou animais."));
+        let cont = 0;
+        let palavra = "";
+
+
+    while(true) {
+
+        if(jogo == "frutas") {
+            tema = true;
+            palavra = frutas[cont];
+            cont++
+            break;
+        }
+        else if(jogo =="objetos") {
+            tema = true;
+            palavra = objetos[cont];
+            cont++
+            break;
+        }
+
+        else if(jogo =="transportes") {
+            tema = true;
+            palavra = transportes[cont];
+            cont++
+            break;
+        }
+
+        else if(jogo =="cores") {
+            tema = true;
+            palavra = cores[cont];
+            cont++
+            break;
+        }
+
+        else if(jogo =="animais") {
+            tema = true;
+            palavra = animais[cont];
+            cont++
+            break;
+        }
+
+        else {
+            alert("Insira um tema válido");
+            let jogo = (prompt("Escolha um tema: frutas, objetos, transportes, cores ou animais."));
+        }
+        
+        if(cont == 5) {
+            cont= 0;
+        }
+
+        return palavra;
+    }
+}
+
+    function forca(word) {
+        let p = word;
+        let corpo = 0;
+        let letra = "";
+        let falha = true;
+        let word_game = "";
+        let pontos = 0;
+        let len = p.length;
+
+
+            letra = (prompt("Insira uma letra:"));
+            while(true) {
+
+                if(isNaN(letra) == false) {
+                    alert("Insira apenas letras");
+                }
+                
+                else if(letra.length >1) {
+                    alert("Insira apenas 1 letra!");
+                }
+                else{
+                    while(true) {
+            if(corpo == 6) {
+                alert("Você Perdeu! 🤡");
+                break;
+            }
+
+            if(pontos == len +1) {
+                alert("Você ganhou!");
+                break;
+            }
+                    for(i = 0; i<len; i++) {
+                if(letra == word[i]) {
+                    word_game[i] = letra; 
+                    falha = false;
+                    pontos++;
+                }
+                else{
+                    word_game[i] = "_"
+                }
+            }
+
+            if(falha == true) {
+                corpo + 1;
+            }
+
+            console.log(word);
+            
+            if(corpo == 1) {
+                console.log("________");
+                console.log("|      O");
+                console.log("|");
+                console.log("|");
+                console.log("|");
+                console.log("|");
+            }
+
+            else if(corpo == 2) {
+                console.log("________");
+                console.log("|      O");
+                console.log("|      |");
+                console.log("|      |");
+                console.log("|");
+                console.log("|");
+            }
+
+            else if(corpo == 3) {
+                console.log("________");
+                console.log("|      O");
+                console.log("|     /|");
+                console.log("|      |");
+                console.log("|");
+                console.log("|");
+            }
+
+            else if(corpo == 4) {
+                console.log("________");
+                console.log("|      O");
+                console.log("|     /|\\");
+                console.log("|      |");
+                console.log("|");
+                console.log("|");
+            }
+
+            else if(corpo == 5) {
+                console.log("________");
+                console.log("|      O");
+                console.log("|     /|\\");
+                console.log("|      |");
+                console.log("|     /");
+                console.log("|");
+            }
+
+            else if(corpo == 5) {
+                console.log("________");
+                console.log("|      O");
+                console.log("|     /|\\");
+                console.log("|      |");
+                console.log("|     / \\");
+                console.log("|");
+            }
+            letra = (prompt("Insira uma letra:"));
+                }
+                
+            }
+
+        }
+    }
+
+        while(repeat == "s") {
+        palavra = insira_tema(frutas, objetos, transportes, cores, animais);
+        forca(word);
+        repeat = prompt("Digite 's' para jogar novamente:");
+    }
+    </script>
+</body>
+</html>
