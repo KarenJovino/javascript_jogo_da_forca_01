@@ -8,185 +8,214 @@
 </head>
 <body>
     <script>
-   
-    let frutas = ["uva", "banana", "abacate", "morango", "laranja"];
-    let objetos = ["mesa", "relogio", "garrafa", "retrato", "livro"];
-    let transportes = ["carro", "moto", "bicicleta", "caminhão", "onibus"];
-    let cores = ["amarelo", "preto", "azul", "rosa", "verde"];
-    let animais = ["avestruz", "gato", "cachorro", "capivara", "urso"];
-    let repeat = ("s");
-    let word = "";
-
-    function insira_tema(frutas,objetos,transportes,cores,animais) {
-        let tema = (false);
-        let jogo = (prompt("Escolha um tema: frutas, objetos, transportes, cores ou animais."));
-        let cont = 0;
-        let palavra = "";
-
-
-    while(true) {
-
-        if(jogo == "frutas") {
-            tema = true;
-            palavra = frutas[cont];
-            cont++
-            break;
-        }
-        else if(jogo =="objetos") {
-            tema = true;
-            palavra = objetos[cont];
-            cont++
-            break;
-        }
-
-        else if(jogo =="transportes") {
-            tema = true;
-            palavra = transportes[cont];
-            cont++
-            break;
-        }
-
-        else if(jogo =="cores") {
-            tema = true;
-            palavra = cores[cont];
-            cont++
-            break;
-        }
-
-        else if(jogo =="animais") {
-            tema = true;
-            palavra = animais[cont];
-            cont++
-            break;
-        }
-
-        else {
-            alert("Insira um tema válido");
-            let jogo = (prompt("Escolha um tema: frutas, objetos, transportes, cores ou animais."));
-        }
+        let novamente = "1";
+        let temas = new Array;
+        let tema;
+        let game;
+        let jogo;
+        temas [0] = ["laranja", "banana", "uva", "pera", "morango", "maracuja"];
+        temas [1] = ["mesa", "relogio", "caneca", "livro", "telefone", "ventilador"];
+        temas [2] = ["baralho", "damas", "xadrez", "ludo", "videogame", "gamao"];
+        temas [3] = ["vermelho", "azul", "preto", "rosa", "roxo", "branco"];
+        temas [4] = ["brasil", "alemanha", "russia", "china", "italia", "mexico"];
+        temas [5] = ["avestruz", "gato", "cachorro", "macaco", "elefante", "tigre"];
         
-        if(cont == 5) {
-            cont= 0;
+        function seleciona_tema(temas){
+            let c = 0;
+            let tema = (parseInt(prompt("Selecione seu tema: 0 - Frutas, 1 - Objetos, 2 - Jogos, 3 - Cores, 4 - Paises, 5 - Animais)")));
+            while (tema < 0 || tema >= 6) {
+                alert("Comando invalido");
+                tema = (parseInt(prompt("Selecione seu tema: 0 - Frutas, 1 - Objetos, 2 - Jogos, 3 - Cores, 4 - Paises, 5 - Animais)")));
+            }
+            c++;
+            let palavra = temas[tema][c];
+            if (c == 6){
+                c = 0;
+            }
+            return palavra;
         }
 
-        return palavra;
-    }
-}
-
-    function forca(word) {
-        let p = word;
-        let corpo = 0;
-        let letra = "";
-        let falha = true;
-        let word_game = "";
-        let pontos = 0;
-        let len = p.length;
-
-
-            letra = (prompt("Insira uma letra:"));
-            while(true) {
-
-                if(isNaN(letra) == false) {
-                    alert("Insira apenas letras");
-                }
-                
-                else if(letra.length >1) {
-                    alert("Insira apenas 1 letra!");
-                }
-                else{
-                    while(true) {
-            if(corpo == 6) {
-                alert("Você Perdeu! 🤡");
-                break;
+        function len(palavra){
+            let cont = 0;
+            let c = palavra + "9";
+            let l = "";
+            while (l != "9"){
+                l = c[cont];
+                cont++;
             }
-
-            if(pontos == len +1) {
-                alert("Você ganhou!");
-                break;
-            }
-                    for(i = 0; i<len; i++) {
-                if(letra == word[i]) {
-                    word_game[i] = letra; 
-                    falha = false;
-                    pontos++;
-                }
-                else{
-                    word_game[i] = "_"
-                }
-            }
-
-            if(falha == true) {
-                corpo + 1;
-            }
-
-            console.log(word);
-            
-            if(corpo == 1) {
-                console.log("________");
-                console.log("|      O");
-                console.log("|");
-                console.log("|");
-                console.log("|");
-                console.log("|");
-            }
-
-            else if(corpo == 2) {
-                console.log("________");
-                console.log("|      O");
-                console.log("|      |");
-                console.log("|      |");
-                console.log("|");
-                console.log("|");
-            }
-
-            else if(corpo == 3) {
-                console.log("________");
-                console.log("|      O");
-                console.log("|     /|");
-                console.log("|      |");
-                console.log("|");
-                console.log("|");
-            }
-
-            else if(corpo == 4) {
-                console.log("________");
-                console.log("|      O");
-                console.log("|     /|\\");
-                console.log("|      |");
-                console.log("|");
-                console.log("|");
-            }
-
-            else if(corpo == 5) {
-                console.log("________");
-                console.log("|      O");
-                console.log("|     /|\\");
-                console.log("|      |");
-                console.log("|     /");
-                console.log("|");
-            }
-
-            else if(corpo == 5) {
-                console.log("________");
-                console.log("|      O");
-                console.log("|     /|\\");
-                console.log("|      |");
-                console.log("|     / \\");
-                console.log("|");
-            }
-            letra = (prompt("Insira uma letra:"));
-                }
-                
-            }
-
+            return cont - 1;
         }
-    }
 
-        while(repeat == "s") {
-        palavra = insira_tema(frutas, objetos, transportes, cores, animais);
-        forca(word);
-        repeat = prompt("Digite 's' para jogar novamente:");
-    }
+        function percorre_palavra(palavra, usadas){
+            let game = ""; 
+            let v = false;
+            for (i = 0; i < len(palavra); i++){
+                for (j = 0; j < len(usadas); j++){
+                    if (palavra[i].toUpperCase() == usadas[j]){
+                        game += usadas[j].toUpperCase() + " ";
+                        v = true;
+                    }
+                }
+                if (v == false){
+                    game += "_ ";
+                }
+                v = false;
+            }
+            return game;
+        }
+
+        function verifica_letra(letra, usadas){
+            u = usadas.toLowerCase();
+            for (i = 0; i <= len(usadas); i++){
+                if (letra.toLowerCase() == u[i]){
+                    return false;
+                }
+                return true;
+            }
+        }
+
+        function forca(palavra){
+            let letra;
+            let pontos = 0;
+            let corpo = 0;
+            let falha = true;
+            let usadas = " ";
+            let game = "";
+            let igual = false;
+            let objetivo = len(palavra);
+
+            while(pontos < len(palavra) || corpo < 6){
+                letra = (prompt("Insira uma letra: "));
+                while(letra == "0" || letra == "1" || letra == "2" || letra == "3" || letra == "4" || letra == "5" || letra == "6" || letra == "7" || letra == "8" || letra == "9"){
+                    letra = (prompt("Numeros não são validos, Insira uma letra: "));
+                    while(len(letra) > 1){
+                        letra = (prompt("Insira apenas uma letra: "));
+                    }
+                }
+                while(len(letra) > 1){
+                    letra = (prompt("Insira apenas uma letra: "));
+                    while(letra == "0" || letra == "1" || letra == "2" || letra == "3" || letra == "4" || letra == "5" || letra == "6" || letra == "7" || letra == "8" || letra == "9"){
+                        letra = (prompt("Numeros não são validos, Insira uma letra: "));
+                    }
+                }
+                for (i = 0; i <= len(usadas); i++){
+                    if (letra.toUpperCase() == usadas[i]){
+                        igual = true;
+                        letra = (prompt("Letra já usada, escolha outra letra:"));
+                        break;
+                    }
+                }
+                while (igual == true){
+                    for (i = 0; i <= len(usadas); i++){
+                        if (letra.toUpperCase() == usadas[i]){
+                            igual = true;
+                            letra = (prompt("Letra já usada, escolha outra letra:"));
+                            break;
+                        }
+                        else{
+                            igual = false;
+                        }
+                }
+                }
+                usadas += letra.toUpperCase() + " ";
+                for (i = 0; i < len(palavra); i++){
+                    if (palavra[i] == letra){
+                        game = percorre_palavra(palavra, usadas);
+                        for (j = 0; j < len(game); j++){
+                            if (letra.toUpperCase() == game[j]){
+                                pontos++;
+                            }
+                        }
+                        falha = false;
+                    }
+                }
+                if (falha == true){
+                    corpo++;
+                }
+                else{
+                    falha = true;
+                }
+                
+                console.log(game);
+                console.log("Usadas: " + usadas.toUpperCase());
+
+                if (pontos == objetivo){
+                   return ("Você ganhou!")
+                }
+
+                if(corpo == 0) {
+                console.log("________");
+                console.log("|");
+                console.log("|");
+                console.log("|");
+                console.log("|");
+                console.log("|");
+                }
+                else if(corpo == 1) {
+                console.log("________");
+                console.log("|      O");
+                console.log("|");
+                console.log("|");
+                console.log("|");
+                console.log("|");
+                }
+
+                else if(corpo == 2) {
+                    console.log("________");
+                    console.log("|      O");
+                    console.log("|      |");
+                    console.log("|      |");
+                    console.log("|");
+                    console.log("|");
+                }
+
+                else if(corpo == 3) {
+                    console.log("________");
+                    console.log("|      O");
+                    console.log("|     /|");
+                    console.log("|      |");
+                    console.log("|");
+                    console.log("|");
+                }
+
+                else if(corpo == 4) {
+                    console.log("________");
+                    console.log("|      O");
+                    console.log("|     /|\\");
+                    console.log("|      |");
+                    console.log("|");
+                    console.log("|");
+                }
+
+                else if(corpo == 5) {
+                    console.log("________");
+                    console.log("|      O");
+                    console.log("|     /|\\");
+                    console.log("|      |");
+                    console.log("|     /");
+                    console.log("|");
+                }
+
+                else if(corpo == 6) {
+                    console.log("________");
+                    console.log("|      O");
+                    console.log("|     /|\\");
+                    console.log("|      |");
+                    console.log("|     / \\");
+                    console.log("|");
+
+                    return ("Você perdeu.")
+                }
+
+            }
+        }
+
+        while(novamente == "1"){
+            p = seleciona_tema(temas);
+            jogo = console.log(forca(p));
+            novamente = (prompt("Digite '1' para jogar novamente: "));
+        }
+
     </script>
 </body>
 </html>
