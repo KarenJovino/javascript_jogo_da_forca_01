@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Jogo da Forca</title>
 </head>
 <body>
     <script>
@@ -21,13 +21,12 @@
         temas [5] = ["avestruz", "gato", "cachorro", "macaco", "elefante", "tigre"];
         
         function seleciona_tema(temas){
-            let c = 0;
+            let c = Math.floor(Math.random()*5);
             let tema = (parseInt(prompt("Selecione seu tema: 0 - Frutas, 1 - Objetos, 2 - Jogos, 3 - Cores, 4 - Paises, 5 - Animais)")));
             while (tema < 0 || tema >= 6) {
                 alert("Comando invalido");
                 tema = (parseInt(prompt("Selecione seu tema: 0 - Frutas, 1 - Objetos, 2 - Jogos, 3 - Cores, 4 - Paises, 5 - Animais)")));
             }
-            c++;
             let palavra = temas[tema][c];
             if (c == 6){
                 c = 0;
@@ -119,7 +118,7 @@
                 }
                 usadas += letra.toUpperCase() + " ";
                 for (i = 0; i < len(palavra); i++){
-                    if (palavra[i] == letra){
+                    if (palavra[i].toUpperCase() == letra.toUpperCase()){
                         game = percorre_palavra(palavra, usadas);
                         for (j = 0; j < len(game); j++){
                             if (letra.toUpperCase() == game[j]){
@@ -140,7 +139,7 @@
                 console.log("Usadas: " + usadas.toUpperCase());
 
                 if (pontos == objetivo){
-                   return ("Você ganhou!")
+                   return ("Você ganhou!");
                 }
 
                 if(corpo == 0) {
@@ -209,6 +208,8 @@
 
             }
         }
+        
+        alert("Jogo da Forca");
 
         while(novamente == "1"){
             p = seleciona_tema(temas);
